@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Legend Media & Print</title>
+    <meta name="description" content="Browse the portfolio of Legend Media & Print — bold, high-converting websites built for businesses across every industry.">
+    <style>
+        /* ===== CUSTOM FONTS ===== */
+        @font-face {
+            font-family: 'GlitchGoblin';
+            src: url('fonts/GlitchGoblin.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+
+        @font-face {
+            font-family: 'OldComputerSt';
+            src: url('fonts/OldcomputerSt.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+        }
+        /* ===== RESET ===== */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* ===== CUSTOM PROPERTIES ===== */
+        :root {
+            --bg: #000000;
+            --bg-muted: #111111;
+            --accent: #c6ff00;
+            --accent-secondary: #8eff00;
+            --text: #ffffff;
+            --border: rgba(198, 255, 0, 0.2);
+            --gradient: linear-gradient(135deg, #c6ff00 0%, #8eff00 100%);
+            --font-heading: 'GlitchGoblin', sans-serif;
+            --font-body: 'Courier New', Courier, monospace;
+            --radius-pill: 50px;
+            --radius-card: 15px;
+            --glow: 0 0 8px rgba(255, 255, 255, 0.5), 0 0 15px rgba(255, 255, 255, 0.3), 0 0 20px rgba(255, 255, 255, 0.2);
+            --glow-sm: 0 0 8px rgba(255, 255, 255, 0.4), 0 0 15px rgba(255, 255, 255, 0.2);
+            --card-hover-shadow: 0 0 15px rgba(198, 255, 0, 0.4), 0 0 30px rgba(198, 255, 0, 0.1);
+        }
+
+        /* ===== BASE ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            font-size: 16px;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: var(--accent);
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        img {
+            max-width: 100%;
+            display: block;
+        }
+
+        /* ===== UTILITY ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .neon-text {
+            font-family: var(--font-heading);
+            color: var(--accent);
+            text-shadow: var(--glow);
+            -webkit-text-stroke: 0.5px black;
+            text-stroke: 0.5px black;
+        }
+
+        .neon-text-sm {
+            font-family: var(--font-heading);
+            color: var(--accent);
+            text-shadow: var(--glow-sm);
+            -webkit-text-stroke: 0.5px black;
+            text-stroke: 0.5px black;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 36px;
+            font-family: var(--font-heading);
+            font-size: 0.95rem;
+            color: var(--accent);
+            background: transparent;
+            border: 2px solid var(--accent);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s, box-shadow 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: var(--gradient);
+            color: #000;
+            opacity: 1;
+            box-shadow: 0 0 20px rgba(198, 255, 0, 0.3);
+        }
+
+        .btn-sm {
+            padding: 10px 24px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== NAVIGATION ===== */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border);
+            padding: 16px 0;
+        }
+
+        .nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-brand-group {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .nav-logo {
+            height: 46px;
+            width: auto;
+            filter: drop-shadow(0 0 8px rgba(198, 255, 0, 0.3));
+        }
+
+        .nav-brand {
+            font-family: var(--font-heading);
+            font-size: 1.1rem;
+            color: var(--accent);
+            text-shadow: var(--glow-sm);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            -webkit-text-stroke: 0.5px black;
+            text-stroke: 0.5px black;
+        }
+
+        .nav-link {
+            font-family: var(--font-body);
+            font-size: 0.85rem;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 8px 18px;
+            border-radius: var(--radius-pill);
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .nav-link:hover {
+            background: var(--accent);
+            color: #000;
+            opacity: 1;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Glitch gif background */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('images/screen glitch.gif') center/cover;
+            opacity: 0.05;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Color overlay + grid pattern */
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background:
+                linear-gradient(rgba(198, 255, 0, 0.02), rgba(198, 255, 0, 0.02)),
+                rgba(255, 255, 255, 0.05);
+            background-image:
+                linear-gradient(rgba(198, 255, 0, 0.02), rgba(198, 255, 0, 0.02)),
+                linear-gradient(rgba(198, 255, 0, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(198, 255, 0, 0.03) 1px, transparent 1px);
+            background-size: 100% 100%, 60px 60px, 60px 60px;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 24px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: clamp(0.9rem, 2vw, 1.1rem);
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 650px;
+            margin: 0 auto 40px;
+            line-height: 1.8;
+        }
+
+        /* ===== FILTER BAR ===== */
+        .filter-bar {
+            background: var(--bg-muted);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 24px 0;
+            position: sticky;
+            top: 58px;
+            z-index: 900;
+        }
+
+        .filter-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 20px;
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            color: var(--accent);
+            background: transparent;
+            border: 1px solid var(--border);
+            border-radius: var(--radius-pill);
+            cursor: pointer;
+            transition: background 0.3s, color 0.3s, border-color 0.3s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .filter-btn:hover {
+            border-color: var(--accent);
+        }
+
+        .filter-btn.active {
+            background: var(--gradient);
+            color: #000;
+            border-color: var(--accent);
+        }
+
+        /* ===== PORTFOLIO GRID ===== */
+        .portfolio {
+            padding: 80px 0;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        /* ===== PORTFOLIO CARD ===== */
+        .card {
+            background: var(--bg-muted);
+            border: 1px solid var(--border);
+            border-radius: var(--radius-card);
+            padding: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--card-hover-shadow);
+        }
+
+        .card-tag {
+            display: inline-block;
+            font-family: var(--font-heading);
+            font-size: 0.7rem;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            padding: 4px 14px;
+            border-radius: var(--radius-pill);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+            align-self: flex-start;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 24px;
+            flex-grow: 1;
+        }
+
+        .card .btn-sm {
+            align-self: flex-start;
+        }
+
+        /* Card hidden state for filtering */
+        .card.hidden {
+            display: none;
+        }
+
+        /* ===== CTA SECTION ===== */
+        .cta-section {
+            background: var(--bg-muted);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(1.5rem, 4vw, 2.5rem);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 20px;
+        }
+
+        .cta-section p {
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 550px;
+            margin: 0 auto 40px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--bg-muted);
+            border-top: 1px solid var(--border);
+            padding: 60px 0;
+            text-align: center;
+        }
+
+        .footer-brand {
+            font-size: 1.2rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 12px;
+        }
+
+        .footer-tagline {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .footer-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 0.85rem;
+        }
+
+        .footer-copy {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1023px) {
+            .portfolio-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero h1 {
+                letter-spacing: 2px;
+            }
+
+            .nav-brand {
+                font-size: 0.95rem;
+                letter-spacing: 1px;
+            }
+
+            .nav-logo {
+                height: 38px;
+            }
+        }
+
+        @media (max-width: 639px) {
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .hero {
+                padding: 130px 0 60px;
+            }
+
+            .card {
+                padding: 24px;
+            }
+
+            .filter-buttons {
+                gap: 8px;
+            }
+
+            .filter-btn {
+                padding: 6px 14px;
+                font-size: 0.7rem;
+            }
+
+            .btn {
+                padding: 12px 28px;
+                font-size: 0.85rem;
+            }
+
+            .cta-section {
+                padding: 70px 0;
+            }
+
+            .nav-brand {
+                font-size: 0.8rem;
+            }
+
+            .nav-logo {
+                height: 32px;
+            }
+
+            .nav-brand-group {
+                gap: 8px;
+            }
+
+            .nav-link {
+                font-size: 0.75rem;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="nav">
+        <div class="container">
+            <div class="nav-brand-group">
+                <img src="lmxp-logo.png.png" alt="Legend Media & Print Logo" class="nav-logo">
+                <span class="nav-brand">Legend Media &amp; Print</span>
+            </div>
+            <a href="https://legendsoftwaredev.github.io/legendmediaprint/" class="nav-link">&larr; Back to Main Site</a>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content container">
+            <h1 class="neon-text">Our Work Speaks for Itself</h1>
+            <p>Legend Media &amp; Print builds bold, high-converting websites for businesses across every industry. Browse our portfolio below.</p>
+            <a href="https://legendsoftwaredev.github.io/legendmediaprint/" class="btn">Visit Legend Media &amp; Print</a>
+        </div>
+    </section>
+
+    <!-- CATEGORY FILTER BAR -->
+    <section class="filter-bar">
+        <div class="container">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="home-services">Home Services</button>
+                <button class="filter-btn" data-filter="construction">Construction</button>
+                <button class="filter-btn" data-filter="food-hospitality">Food &amp; Hospitality</button>
+                <button class="filter-btn" data-filter="health-wellness">Health &amp; Wellness</button>
+                <button class="filter-btn" data-filter="professional-services">Professional Services</button>
+                <button class="filter-btn" data-filter="technology">Technology</button>
+                <button class="filter-btn" data-filter="personal-care">Personal Care</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GRID -->
+    <section class="portfolio">
+        <div class="container">
+            <div class="portfolio-grid">
+
+                <!-- 1. ComfortAir HVAC -->
+                <article class="card" data-category="home-services">
+                    <span class="card-tag">Home Services</span>
+                    <h3 class="neon-text-sm">ComfortAir HVAC</h3>
+                    <p class="card-desc">Heating, cooling &amp; ventilation</p>
+                    <a href="https://legendsoftwaredev.github.io/comfortair-hvac-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 2. Ironclad Builders -->
+                <article class="card" data-category="construction">
+                    <span class="card-tag">Construction</span>
+                    <h3 class="neon-text-sm">Ironclad Builders</h3>
+                    <p class="card-desc">General contracting &amp; construction</p>
+                    <a href="https://legendsoftwaredev.github.io/ironclad-builders-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 3. GreenScape Outdoors -->
+                <article class="card" data-category="construction">
+                    <span class="card-tag">Construction</span>
+                    <h3 class="neon-text-sm">GreenScape Outdoors</h3>
+                    <p class="card-desc">Landscaping &amp; lawn care</p>
+                    <a href="https://legendsoftwaredev.github.io/greenscape-landscaping-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 4. Savor & Serve Catering -->
+                <article class="card" data-category="food-hospitality">
+                    <span class="card-tag">Food &amp; Hospitality</span>
+                    <h3 class="neon-text-sm">Savor &amp; Serve Catering</h3>
+                    <p class="card-desc">Event catering &amp; private dining</p>
+                    <a href="https://legendsoftwaredev.github.io/savor-serve-catering-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 5. The Copper Table -->
+                <article class="card" data-category="food-hospitality">
+                    <span class="card-tag">Food &amp; Hospitality</span>
+                    <h3 class="neon-text-sm">The Copper Table</h3>
+                    <p class="card-desc">Upscale dining restaurant</p>
+                    <a href="https://legendsoftwaredev.github.io/copper-table-restaurant-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 6. Bright Smile Dental -->
+                <article class="card" data-category="health-wellness">
+                    <span class="card-tag">Health &amp; Wellness</span>
+                    <h3 class="neon-text-sm">Bright Smile Dental</h3>
+                    <p class="card-desc">General &amp; cosmetic dentistry</p>
+                    <a href="https://legendsoftwaredev.github.io/dental-practice-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 7. Glow Aesthetics MedSpa -->
+                <article class="card" data-category="health-wellness">
+                    <span class="card-tag">Health &amp; Wellness</span>
+                    <h3 class="neon-text-sm">Glow Aesthetics MedSpa</h3>
+                    <p class="card-desc">Botox, fillers &amp; skincare</p>
+                    <a href="https://legendsoftwaredev.github.io/medspa-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 8. Summit Financial Group -->
+                <article class="card" data-category="professional-services">
+                    <span class="card-tag">Professional Services</span>
+                    <h3 class="neon-text-sm">Summit Financial Group</h3>
+                    <p class="card-desc">Tax, bookkeeping &amp; financial consulting</p>
+                    <a href="https://legendsoftwaredev.github.io/accounting-firm-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 9. Sterling & Associates -->
+                <article class="card" data-category="professional-services">
+                    <span class="card-tag">Professional Services</span>
+                    <h3 class="neon-text-sm">Sterling &amp; Associates</h3>
+                    <p class="card-desc">Business law &amp; civil litigation</p>
+                    <a href="https://legendsoftwaredev.github.io/law-firm-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 10. SwiftPay Solutions -->
+                <article class="card" data-category="technology">
+                    <span class="card-tag">Technology</span>
+                    <h3 class="neon-text-sm">SwiftPay Solutions</h3>
+                    <p class="card-desc">Payment processing &amp; POS systems</p>
+                    <a href="https://legendsoftwaredev.github.io/payment-fintech-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 11. Sharp Cuts Barbershop -->
+                <article class="card" data-category="personal-care">
+                    <span class="card-tag">Personal Care</span>
+                    <h3 class="neon-text-sm">Sharp Cuts Barbershop</h3>
+                    <p class="card-desc">Haircuts, beard trims &amp; grooming</p>
+                    <a href="https://legendsoftwaredev.github.io/sharp-cuts-barber-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+                <!-- 12. Luxe Hair Studio -->
+                <article class="card" data-category="personal-care">
+                    <span class="card-tag">Personal Care</span>
+                    <h3 class="neon-text-sm">Luxe Hair Studio</h3>
+                    <p class="card-desc">Cuts, color, balayage &amp; bridal styling</p>
+                    <a href="https://legendsoftwaredev.github.io/luxe-hair-salon-demo/" target="_blank" rel="noopener noreferrer" class="btn btn-sm">View Site &rarr;</a>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="neon-text-sm">Ready to Get Your Own Custom Website?</h2>
+            <p>Let Legend Media &amp; Print build a website that works as hard as you do.</p>
+            <a href="https://legendsoftwaredev.github.io/legendmediaprint/#contact" class="btn">Get Started</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-brand neon-text-sm">Legend Media &amp; Print</div>
+            <p class="footer-tagline">Websites That Work As Hard As You Do</p>
+            <a href="https://legendsoftwaredev.github.io/legendmediaprint/" class="footer-link">&larr; Back to Main Site</a>
+            <p class="footer-copy">&copy; 2025 Legend Media &amp; Print. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- CATEGORY FILTER JS -->
+    <script>
+        (function() {
+            const buttons = document.querySelectorAll('.filter-btn');
+            const cards = document.querySelectorAll('.card');
+
+            buttons.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    const filter = this.getAttribute('data-filter');
+
+                    buttons.forEach(function(b) { b.classList.remove('active'); });
+                    this.classList.add('active');
+
+                    cards.forEach(function(card) {
+                        if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                            card.classList.remove('hidden');
+                        } else {
+                            card.classList.add('hidden');
+                        }
+                    });
+                });
+            });
+        })();
+    </script>
+
+</body>
+</html>
